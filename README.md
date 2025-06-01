@@ -1,15 +1,7 @@
-Hello world!
+# Welcome to my GitHub ! 
+Nice to meet you here, I am **Andy**, a Year 3 HKUST student passionate about **Data Science** and **Machine Learning** and I'm eager to apply what I learnt to real world challenges.
 
-I am SunGamePlay, a Java learner.
-I love Mathematics and playing a lot of game.
-I started to learn Java as I want to make a lot cool features in Minecraft.
-In the past time, I used command and datapack, but it is not sufficient to me.
-Now, I learn Java and trying to make my own plugin.
-
-
-
-
-<!---
-SunGamePlay/SunGamePlay is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+## About Me
+* 🎓Education : Currently pursuing a degree in Data Science with Extended Major in Artificial Intelligence at HKUST.
+* 💻Interests : Machine learning, data analysis, predictive modeling and exploring AI's potential to solve practical problems.
+* 
