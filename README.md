@@ -1,13 +1,16 @@
 # Welcome to my GitHub ! 
-Nice to meet you here, I am **Andy**, a Year 3 HKUST student passionate about **Data Science** and **Machine Learning** and I'm eager to apply what I learnt to real world challenges.
+Nice to meet you here, I am **Andy**, a Year 3 HKUST student passionate about **Data Science** and **Machine Learning**, driven to transform data into actionable insights and tackle real-world challenges through innovative solutions.
 
 ## About Me
-* 🎓 Education : Currently pursuing a degree in Data Science with Extended Major in Artificial Intelligence at HKUST.
-* 💻 Interests : Machine learning, data analysis, predictive modeling and exploring AI's potential to solve practical problems.
-* 🌟 Goals : To build impactful projects, collaborate with others, and continuously learn in the ever-evolving field of AI.
+* 🎓 Education : Pursuing a Bachelor’s in Data Science with an Extended Major in Artificial Intelligence at Hong Kong University of Science and Technology.
+* 💻 Interests : Data analysis, predictive modeling, machine learning, and harnessing AI to address practical, impactful problems.
+* 🌟 Goals : Develop meaningful projects, collaborate with diverse teams, and continuously grow in the dynamic fields of data science and AI.
 
 ## Skills
 * Programming: Python, R, SQL, Java, C++
-* Tools & Frameworks: Pandas, NumPy, Scikit-learn, TensorFlow, Jupyter
-* Other: Data Visualization (Matplotlib, GGPlot)
-
+* Data Analysis: Pandas, NumPy, Scikit-learn, Excel
+* Visualization: Tableau, Matplotlib, Seaborn, GGPlot
+* Database: SQL
+* Frameworks & Tools: TensorFlow, Jupyter
+* Analytical: Statistical Analysis, Data Cleaning, Predictive Modeling
+* Soft Skills: Problem-Solving, Communication, Team Collaboration
