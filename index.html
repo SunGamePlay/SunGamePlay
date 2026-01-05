@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunGamePlay | Data Scientist</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Righteous&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.2);
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* --- Animated Background --- */
+        .background-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden;
+        }
+
+        .blob {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+        .blob-1 { width: 500px; height: 500px; background: var(--accent-purple); top: -100px; left: -100px; }
+        .blob-2 { width: 400px; height: 400px; background: var(--accent-cyan); bottom: -50px; right: -50px; animation-delay: -5s; }
+        .blob-3 { width: 300px; height: 300px; background: var(--accent-pink); top: 40%; left: 40%; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* --- Components --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            height: 100%;
+            display: flex; flex-direction: column;
+        }
+        .glass-panel:hover {
+            border-color: var(--glass-highlight);
+            transform: translateY(-5px);
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 { font-family: 'Righteous', cursive; letter-spacing: 1px; }
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--accent-cyan); margin-top: 1rem;}
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--text-main); }
+        p { line-height: 1.8; color: var(--text-muted); margin-bottom: 1rem; font-size: 1rem; }
+
+        /* --- Layout --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        header { text-align: center; margin-bottom: 5rem; }
+        .tagline { font-size: 1.25rem; color: var(--accent-pink); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- Skills Grid (Updated for Logic) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            padding: 0.4rem 0.9rem;
+            margin: 0.2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 10px var(--accent-cyan); }
+        
+        /* Specific tag colors for variety */
+        .tag-soft { border-color: var(--accent-yellow); color: var(--accent-yellow); background: transparent; }
+        .tag-soft:hover { background: var(--accent-yellow); color: #000; box-shadow: 0 0 10px var(--accent-yellow); }
+
+        /* RPG Stats */
+        .lang-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
+        .stat-bar { display: flex; gap: 4px; }
+        .stat-point { width: 12px; height: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); transform: skew(-15deg); }
+        .stat-point.filled { background: var(--accent-pink); box-shadow: 0 0 8px var(--accent-pink); border-color: var(--accent-pink); }
+
+        /* --- Project Layouts --- */
+        .project-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center; margin-bottom: 2rem; }
+        
+        /* Metric Cards */
+        .metric-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
+        .chart-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .chart-header { width: 100%; display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
+        .metric-arrow { font-size: 1rem; color: var(--accent-green); }
+        .big-stat { font-family: 'Righteous'; font-size: 2.5rem; color: var(--text-main); }
+        .stat-sub { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Internship Layout --- */
+        .experience-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .big-number {
+            font-size: 4rem; font-family: 'Righteous';
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            line-height: 1; margin-bottom: 0.5rem;
+        }
+
+        /* --- Footer --- */
+        footer { text-align: center; margin-top: 4rem; padding-bottom: 2rem; color: var(--glass-border); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .project-grid, .experience-layout { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <p class="tagline">Data Science • Artificial Intelligence</p>
+            <h1>SunGamePlay</h1>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                <a href="#" style="color:white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+            </div>
+        </header>
+
+        <!-- Technical Arsenal -->
+        <section>
+            <h2><i class="fas fa-terminal" style="font-size: 0.8em; margin-right: 10px;"></i> Technical Arsenal</h2>
+            
+            <div class="skills-grid">
+                <!-- 1. Languages & Core -->
+                <div class="glass-panel">
+                    <h3><i class="fas fa-code"></i> Engineering Core</h3>
+                    <div>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <!-- 2. AI & ML -->
+                <div class="glass-panel">
+                    <h3><i class="fas fa-brain"></i> AI Frameworks</h3>
+                    <div>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Jupyter</span>
+                    </div>
+                </div>
+
+                <!-- 3. Visualization -->
+                <div class="glass-panel">
+                    <h3><i class="fas fa-chart-pie"></i> Visualization</h3>
+                    <div>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">GGPlot</span>
+                    </div>
+                </div>
+
+                <!-- 4. RPG Languages -->
+                <div class="glass-panel">
+                    <h3><i class="fas fa-globe"></i> Languages</h3>
+                    <div class="lang-row"><span>English</span><div class="stat-bar"><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div></div></div>
+                    <div class="lang-row"><span>Cantonese</span><div class="stat-bar"><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div></div></div>
+                    <div class="lang-row"><span>Mandarin</span><div class="stat-bar"><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div></div></div>
+                </div>
+            </div>
+
+            <!-- Soft Skills & Certs Row -->
+            <div class="skills-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 4rem;">
+                 <!-- Professional Traits -->
+                 <div class="glass-panel" style="justify-content: center;">
+                    <h3><i class="fas fa-users"></i> Professional Traits</h3>
+                    <div style="text-align: center;">
+                        <span class="skill-tag tag-soft">Problem-Solving</span>
+                        <span class="skill-tag tag-soft">Communication</span>
+                        <span class="skill-tag tag-soft">Team Collaboration</span>
+                    </div>
+                </div>
+
+                <!-- Certification -->
+                <div class="glass-panel" style="flex-direction: row; align-items: center; gap: 1rem;">
+                    <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--accent-yellow);"></i>
+                    <div>
+                        <h3 style="margin-bottom: 0.2rem;">Certified</h3>
+                        <p style="margin:0; font-size: 0.9rem; color: #fff;">Student SOC Program Foundations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Experience -->
+        <section>
+            <h2><i class="fas fa-project-diagram" style="font-size: 0.8em; margin-right: 10px;"></i> Project Experiences</h2>
+            
+            <!-- Project 1: Capstone Project-->
+            <div class="glass-panel" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--accent-cyan);">Optimized Diffusion Inpainting</h3>
+                <div class="project-grid">
+                    <div>
+                        <p>
+                            Engineered a diffusion pipeline as stated in the paper "TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning" in Asian Face Image Dataset with <strong>360,000 face images by 2019 individuals</strong>. Modified the pipeline by adding a regulation term to enhance model's performance.
+                        </p>
+                    </div>
+                    <div class="metric-wrapper">
+                        <div class="chart-card">
+                            <div class="chart-header"><span>SSIM</span><i class="fas fa-arrow-up metric-arrow"></i></div>
+                            <div style="height: 100px; width: 100%;"><canvas id="ssimChart"></canvas></div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header"><span>LPIPS</span><i class="fas fa-arrow-down metric-arrow"></i></div>
+                            <div style="height: 100px; width: 100%;"><canvas id="lpipsChart"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: NER Tagging -->
+            <div class="glass-panel" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--accent-pink);">NER Tagging Model</h3>
+                <div class="project-grid">
+                    <div>
+                        <p>
+                            Developed and trained a Named Entity Recognition (NER) model utilizing a dataset of <strong>40,000 labeled sentences</strong>. The model was successfully deployed to predict tags for 5,000 unseen sentences, demonstrating high precision in entity extraction tasks.
+                        </p>
+                    </div>
+                    
+                    <div class="metric-wrapper">
+                        <!-- Score Donut -->
+                        <div class="chart-card">
+                            <div class="chart-header"><span>Project Score</span></div>
+                            <div style="position: relative; height: 100px; width: 100px;">
+                                <canvas id="scoreChart"></canvas>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; color: white;">92%</div>
+                            </div>
+                        </div>
+
+                        <!-- F1 Score Big Stat -->
+                        <div class="chart-card">
+                            <div class="chart-header"><span>Validation F1 Score</span></div>
+                            <div class="big-stat">0.82</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internship Experiences -->
+        <section>
+            <h2><i class="fas fa-briefcase" style="font-size: 0.8em; margin-right: 10px;"></i> Internship Experiences</h2>
+            <div class="experience-layout">
+                <div class="glass-panel">
+                    <h3>Data Analyst @ Quest ION IT (HK)</h3>
+                    <p style="margin-bottom: 0;">
+                        Identified bottlenecks in employee data handling and engineered custom automation scripts using <strong>Python, pandas, and openpyxl</strong>. This initiative transformed the validation workflow, replacing repetitive manual entry with precise, automated data cleaning pipelines.
+                    </p>
+                </div>
+                <div class="glass-panel stat-card" style="align-items: center; justify-content: center; text-align: center;">
+                    <div class="big-number">50+</div>
+                    <div class="stat-sub">Staffs</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 SunGamePlay
+    </footer>
+
+    <!-- Chart Configuration -->
+    <script>
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Outfit';
+
+        // 1. SSIM Chart
+        new Chart(document.getElementById('ssimChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Base', 'Opt.'],
+                datasets: [{
+                    data: [0.179, 0.291],
+                    backgroundColor: ['rgba(255,255,255,0.1)', 'rgba(6,182,212,0.8)'],
+                    borderRadius: 4, barThickness: 20
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: { x: { display: false }, y: { display: true, grid: { display: false } } }
+            }
+        });
+
+        // 2. LPIPS Chart
+        new Chart(document.getElementById('lpipsChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Base', 'Opt.'],
+                datasets: [{
+                    data: [0.786, 0.543],
+                    backgroundColor: ['rgba(255,255,255,0.1)', 'rgba(236,72,153,0.8)'],
+                    borderRadius: 4, barThickness: 20
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: { x: { display: false }, y: { display: true, grid: { display: false } } }
+            }
+        });
+
+        // 3. Project Score Donut (NER)
+        new Chart(document.getElementById('scoreChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Score', 'Remaining'],
+                datasets: [{
+                    data: [92, 8],
+                    backgroundColor: ['#10b981', 'rgba(255,255,255,0.05)'],
+                    borderWidth: 0, cutout: '75%'
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: { enabled: false } }
+            }
+        });
+    </script>
+</body>
+</html>
