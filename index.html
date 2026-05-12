@@ -138,13 +138,13 @@
         }
         .chart-header { width: 100%; display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
         .metric-arrow { font-size: 1rem; color: var(--accent-green); }
-        .big-stat { font-family: 'Righteous'; font-size: 2.5rem; color: var(--text-main); }
+        .big-stat { font-family: 'Righteous',serif; font-size: 2.5rem; color: var(--text-main); }
         .stat-sub { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- Internship Layout --- */
         .experience-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
         .big-number {
-            font-size: 4rem; font-family: 'Righteous';
+            font-size: 4rem; font-family: 'Righteous',serif;
             background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             line-height: 1; margin-bottom: 0.5rem;
@@ -190,6 +190,8 @@
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">R</span>
                         <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Maven</span>
                         <span class="skill-tag">C++</span>
                         <span class="skill-tag">SQL</span>
                         <span class="skill-tag">Node.js</span>
@@ -259,7 +261,7 @@
         <section>
             <h2><i class="fas fa-project-diagram" style="font-size: 0.8em; margin-right: 10px;"></i> Project Experiences</h2>
             
-            <!-- Project 1: Capstone Project-->
+            <!-- Project 1: TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning -->
             <div class="glass-panel" style="margin-bottom: 2rem;">
                 <h3 style="color: var(--accent-cyan);">Optimized Diffusion Inpainting</h3>
                 <div class="project-grid">
@@ -310,9 +312,9 @@
                 </div>
             </div>
 
-            <!-- Project 3: Undercooked -->
+            <!-- Project 3: Multiplayer-->
             <div class="glass-panel" style="margin-bottom: 2rem;">
-                <h3 style="color: var(--accent-purple);">Undercooked</h3>
+                <h3 style="color: var(--accent-purple);">Multiplayer Game Project</h3>
                 <div class="project-grid">
                     <div>
                         <p>
@@ -331,6 +333,25 @@
                             <div class="chart-header"><span>Concurrency</span></div>
                             <div class="big-stat">2P</div>
                             <div class="stat-sub">Co-op Engine</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Search Engine Project -->
+            <div class="glass-panel" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--accent-green);">Search Engine Project</h3>
+                <div class="project-grid">
+                    <div>
+                        <p>
+                            Architected a full-scale search engine featuring a <strong>BFS Crawler</strong>, <strong>Vector Space Model (VSM)</strong> retrieval, and <strong>PageRank</strong> scoring. Implemented persistent multi-layered indexing using <strong>MapDB</strong> and positional indexing for high-precision phrase matching.
+                        </p>
+                    </div>
+                    <div class="metric-wrapper">
+                        <div class="chart-card">
+                            <div class="chart-header"><span>Index Capacity</span></div>
+                            <div class="big-stat">300</div>
+                            <div class="stat-sub">Pages Indexed</div>
                         </div>
                     </div>
                 </div>
