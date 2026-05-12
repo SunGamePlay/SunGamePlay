@@ -23,16 +23,25 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="scroll-progress-container"><div class="progress-bar" id="scroll-bar"></div></div>
     <canvas id="bg-canvas"></canvas>
 
     <nav aria-label="Main Navigation">
-        <div style="font-family: 'Righteous',Arial,serif; color: var(--accent-cyan); font-size: 1.5rem;">SGP</div>
+        <div class="nav-logo">SGP</div>
+        <button class="nav-toggle" aria-label="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#internship">Internship</a></li>
             <li><a href="#projects">Projects</a></li>
         </ul>
+        <div class="nav-controls">
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </nav>
 
     <div class="container" id="home">
@@ -40,8 +49,8 @@
         <header data-aos="fade-down">
             <p class="tagline">Data Science • Artificial Intelligence</p>
             <h1>SunGamePlay</h1>
-            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
-                <a href="https://github.com/SunGamePlay" style="color: var(--text-main); font-size: 1.5rem;" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+            <div class="social-links">
+                <a href="https://github.com/SunGamePlay" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
             </div>
         </header>
 
@@ -102,7 +111,7 @@
             </div>
 
             <!-- Soft Skills & Certs Row -->
-            <div class="skills-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 4rem;">
+            <div class="skills-grid skills-grid-dual" style="margin-bottom: 4rem;">
                  <!-- Professional Traits -->
                  <div class="glass-panel" style="justify-content: center;" data-aos="zoom-in" data-aos-delay="500">
                     <h3><i class="fas fa-users" aria-hidden="true"></i> Professional Traits</h3>
@@ -133,10 +142,6 @@
                     <p class="short-desc" style="margin-bottom: 0;">
                         Identified bottlenecks in employee data handling and engineered custom automation scripts using <strong>Python, pandas, and openpyxl</strong>. This initiative transformed the validation workflow...
                     </p>
-                    <div class="detailed-desc" style="display: none;">
-                        <p style="margin-bottom: 0;">Identified bottlenecks in employee data handling and engineered custom automation scripts using Python, pandas, and openpyxl. This initiative transformed the validation workflow, replacing repetitive manual entry with precise, automated data cleaning pipelines. Reduced processing time by 70% and eliminated human error in data validation.</p>
-                    </div>
-                    <button class="read-more-btn">Read More</button>
                 </div>
                 <div class="glass-panel stat-card" style="align-items: center; justify-content: center; text-align: center;" data-aos="fade-left">
                     <div class="big-number">50+</div>
@@ -155,12 +160,8 @@
                 <div class="project-grid">
                     <div>
                         <p class="short-desc">
-                            Engineered a diffusion pipeline for face inpainting. Modified the pipeline with a regulation term to enhance performance...
+                            Engineered a diffusion pipeline as stated in the paper "TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning" in Asian Face Image Dataset with <strong>360,000 face images by 2019 individuals</strong>. Modified the pipeline by adding a regulation term to enhance model's performance.
                         </p>
-                        <div class="detailed-desc" style="display: none;">
-                            <p>Engineered a diffusion pipeline as stated in the paper 'TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning' in Asian Face Image Dataset with 360,000 face images by 201 individuals. Modified the pipeline by adding a regulation term to enhance model's performance. Detailed benchmarks showed significant improvements in SSIM and LPIPS metrics.</p>
-                        </div>
-                        <button class="read-more-btn">Read More</button>
                     </div>
                     <div class="metric-wrapper">
                         <div class="chart-card">
@@ -181,12 +182,8 @@
                 <div class="project-grid">
                     <div>
                         <p class="short-desc">
-                            Developed and trained an NER model utilizing 40,000 labeled sentences. Successfully predicted tags for 5,000 unseen sentences...
+                            Developed and trained a Named Entity Recognition (NER) model utilizing a dataset of <strong>40,000 labeled sentences</strong>. The model was successfully deployed to predict tags for 5,000 unseen sentences, demonstrating high precision in entity extraction tasks.
                         </p>
-                        <div class="detailed-desc" style="display: none;">
-                            <p>Developed and trained a Named Entity Recognition (NER) model utilizing a dataset of 40,000 labeled sentences. The model was successfully deployed to predict tags for 5,000 unseen sentences, demonstrating high precision in entity extraction tasks. Technical challenges included handling out-of-vocabulary terms and balancing class distribution.</p>
-                        </div>
-                        <button class="read-more-btn">Read More</button>
                     </div>
                     
                     <div class="metric-wrapper">
@@ -211,12 +208,8 @@
                 <div class="project-grid">
                     <div>
                         <p class="short-desc">
-                            Engineered a high-performance, two-player cooperative game using Node.js and Socket.IO. Implemented a 60 FPS tick-based engine...
+                            Engineered a high-performance, two-player cooperative game using <strong>Node.js</strong> and <strong>Socket.IO</strong>. Implemented a 60 FPS tick-based server-side engine to synchronize game state, physics, and collision detection, ensuring a seamless low-latency experience.
                         </p>
-                        <div class="detailed-desc" style="display: none;">
-                            <p>Engineered a high-performance, two-player cooperative game using Node.js and Socket.IO. Implemented a 60 FPS tick-based server-side engine to synchronize game state, physics, and collision detection, ensuring a seamless low-latency experience. Challenges included state reconciliation and interpolation for smooth rendering.</p>
-                        </div>
-                        <button class="read-more-btn">Read More</button>
                     </div>
                     
                     <div class="metric-wrapper">
@@ -240,12 +233,19 @@
                 <div class="project-grid">
                     <div>
                         <p class="short-desc">
-                            Architected a full-scale search engine featuring a BFS Crawler, Vector Space Model (VSM) retrieval, and PageRank scoring...
+                            Developed a <strong>full-scale search engine</strong> featuring a custom crawler, an intelligent indexing pipeline, and a web-based query interface.
                         </p>
                         <div class="detailed-desc" style="display: none;">
-                            <p>Architected a full-scale search engine featuring a BFS Crawler, Vector Space Model (VSM) retrieval, and PageRank scoring. Implemented persistent multi-layered indexing using MapDB and positional indexing for high-precision phrase matching. Optimized for low-latency retrieval across 300+ indexed pages.</p>
+                                <ul>
+                                    <li><strong>Architected a high-performance search engine</strong> from the ground up, featuring a BFS crawler capable of fetching 300 pages in under 100 seconds.</li>
+                                    <li><strong>Engineered a robust indexing pipeline</strong> utilizing Porter’s Stemming algorithm and stop-word removal to optimize search precision.</li>
+                                    <li><strong>Implemented advanced retrieval algorithms</strong>, including TF-IDF weighting and Cosine Similarity for document ranking.</li>
+                                    <li><strong>Enhanced search relevance</strong> by integrating PageRank and title-boosting heuristics.</li>
+                                    <li><strong>Developed a full-stack web interface</strong> using Spring Boot, enabling users to perform Boolean queries (including negative constraints) and visualize rich metadata such as link structures and keyword frequency.</li>
+                                    <li><strong>Optimized storage and retrieval</strong> by leveraging MapDB for inverted file indexing with positional support for efficient phrase matching.</li>
+                                </ul>
                         </div>
-                        <button class="read-more-btn">Read More</button>
+                        
                     </div>
                     <div class="metric-wrapper">
                         <div class="chart-card">
