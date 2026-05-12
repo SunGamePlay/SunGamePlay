@@ -1,4 +1,77 @@
 $(document).ready(function() {
+    // --- 0. Hexagon Grid Background ---
+    const canvas = document.getElementById('bg-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let hexagons = [];
+
+        function initCanvas() {
+            const dpr = window.devicePixelRatio || 1;
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+        }
+
+        function drawHexagon(x, y, r) {
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (Math.PI / 3) * i + (Math.PI / 6);
+                const px = x + r * Math.cos(angle);
+                const py = y + r * Math.sin(angle);
+                if (i === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        let startTime = Date.now();
+
+        function drawGrid() {
+            ctx.clearRect(0, 0, width, height);
+
+            const elapsed = (Date.now() - startTime) / 1000;
+            ctx.strokeStyle = `rgba(243, 243, 243, 1)`;
+            ctx.lineWidth = 16;
+
+            const r = 512;
+            const h = r * Math.sqrt(3);
+            const dy = r * 1.5;
+            const dx = h;
+
+            // Slow continuous drift
+            const offsetX = -((elapsed * 15) % dx);
+            const offsetY = -((elapsed * 10) % (dy * 2));
+
+            // Expand loop bounds slightly to draw off-screen, preventing pop-in during drift
+            for (let y = -dy * 2; y < height + dy * 2; y += dy) {
+                const isEven = Math.round(y / dy) % 2 === 0;
+                for (let x = -dx * 2; x < width + dx * 2; x += dx) {
+                    const xPos = isEven ? x : x + dx / 2;
+                    drawHexagon(xPos + offsetX, y + offsetY, r);
+                }
+            }
+        }
+
+        function animate() {
+            drawGrid();
+            requestAnimationFrame(animate);
+        }
+
+        function handleResize() {
+            initCanvas();
+        }
+
+        window.addEventListener('resize', handleResize);
+        initCanvas();
+        animate();
+    }
+
     // --- 1. Stat Point Generation ---
     $('.stat-bar').each(function() {
         const value = parseInt($(this).data('value')) || 0;
