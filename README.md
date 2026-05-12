@@ -7,10 +7,10 @@ Nice to meet you here, I am **SunGamePlay**, a Year 4 HKUST student passionate a
 * 🌟 Goals : Develop meaningful projects, collaborate with diverse teams, and continuously grow in the dynamic fields of data science and AI.
 
 ## Skills
-* Programming: Python, R, SQL, Java, C++
+* Programming: Python, R, SQL, Java, C++, Node.js
 * Data Analysis: Pandas, NumPy, Scikit-learn, Excel
 * Visualization: Tableau, Matplotlib, Seaborn, GGPlot
 * Database: SQL
-* Frameworks & Tools: TensorFlow, Jupyter
+* Frameworks & Tools: TensorFlow, Jupyter, Express**, Socket.IO
 * Analytical: Statistical Analysis, Data Cleaning, Predictive Modeling
 * Soft Skills: Problem-Solving, Communication, Team Collaboration
