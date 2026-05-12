@@ -13,154 +13,26 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- External Style -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-highlight: rgba(255, 255, 255, 0.2);
-            --accent-cyan: #06b6d4;
-            --accent-purple: #8b5cf6;
-            --accent-pink: #ec4899;
-            --accent-green: #10b981;
-            --accent-yellow: #f59e0b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* --- Animated Background --- */
-        .background-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; overflow: hidden;
-        }
-
-        .blob {
-            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
-            animation: float 20s infinite ease-in-out;
-        }
-        .blob-1 { width: 500px; height: 500px; background: var(--accent-purple); top: -100px; left: -100px; }
-        .blob-2 { width: 400px; height: 400px; background: var(--accent-cyan); bottom: -50px; right: -50px; animation-delay: -5s; }
-        .blob-3 { width: 300px; height: 300px; background: var(--accent-pink); top: 40%; left: 40%; animation-delay: -10s; }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* --- Components --- */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            height: 100%;
-            display: flex; flex-direction: column;
-        }
-        .glass-panel:hover {
-            border-color: var(--glass-highlight);
-            transform: translateY(-5px);
-        }
-
-        /* --- Typography --- */
-        h1, h2, h3 { font-family: 'Righteous', cursive; letter-spacing: 1px; }
-        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--accent-cyan); margin-top: 1rem;}
-        h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--text-main); }
-        p { line-height: 1.8; color: var(--text-muted); margin-bottom: 1rem; font-size: 1rem; }
-
-        /* --- Layout --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        header { text-align: center; margin-bottom: 5rem; }
-        .tagline { font-size: 1.25rem; color: var(--accent-pink); text-transform: uppercase; letter-spacing: 2px; }
-
-        /* --- Skills Grid (Updated for Logic) --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .skill-tag {
-            display: inline-block;
-            padding: 0.4rem 0.9rem;
-            margin: 0.2rem;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--text-main);
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .skill-tag:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 10px var(--accent-cyan); }
-        
-        /* Specific tag colors for variety */
-        .tag-soft { border-color: var(--accent-yellow); color: var(--accent-yellow); background: transparent; }
-        .tag-soft:hover { background: var(--accent-yellow); color: #000; box-shadow: 0 0 10px var(--accent-yellow); }
-
-        /* RPG Stats */
-        .lang-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-        .stat-bar { display: flex; gap: 4px; }
-        .stat-point { width: 12px; height: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); transform: skew(-15deg); }
-        .stat-point.filled { background: var(--accent-pink); box-shadow: 0 0 8px var(--accent-pink); border-color: var(--accent-pink); }
-
-        /* --- Project Layouts --- */
-        .project-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center; margin-bottom: 2rem; }
-        
-        /* Metric Cards */
-        .metric-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
-        .chart-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 16px;
-            padding: 1rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .chart-header { width: 100%; display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
-        .metric-arrow { font-size: 1rem; color: var(--accent-green); }
-        .big-stat { font-family: 'Righteous',serif; font-size: 2.5rem; color: var(--text-main); }
-        .stat-sub { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- Internship Layout --- */
-        .experience-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-        .big-number {
-            font-size: 4rem; font-family: 'Righteous',serif;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            line-height: 1; margin-bottom: 0.5rem;
-        }
-
-        /* --- Footer --- */
-        footer { text-align: center; margin-top: 4rem; padding-bottom: 2rem; color: var(--glass-border); font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            .project-grid, .experience-layout { grid-template-columns: 1fr; }
-            h1 { font-size: 2.5rem; }
-            .skills-grid { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
+
+    <nav aria-label="Main Navigation">
+        <div style="font-family: 'Righteous'; color: var(--accent-cyan); font-size: 1.5rem;">SGP</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
 
     <div class="background-container">
         <div class="blob blob-1"></div>
@@ -168,24 +40,24 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <div class="container">
+    <div class="container" id="home">
         <!-- Header -->
-        <header>
+        <header data-aos="fade-down">
             <p class="tagline">Data Science • Artificial Intelligence</p>
             <h1>SunGamePlay</h1>
             <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
-                <a href="https://github.com/SunGamePlay" style="color:white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/SunGamePlay" style="color:white; font-size: 1.5rem;" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
             </div>
         </header>
 
         <!-- Technical Arsenal -->
-        <section>
-            <h2><i class="fas fa-terminal" style="font-size: 0.8em; margin-right: 10px;"></i> Technical Arsenal</h2>
+        <section id="skills" data-aos="fade-up">
+            <h2><i class="fas fa-terminal" style="font-size: 0.8em; margin-right: 10px;" aria-hidden="true"></i> Technical Arsenal</h2>
             
             <div class="skills-grid">
                 <!-- 1. Languages & Core -->
-                <div class="glass-panel">
-                    <h3><i class="fas fa-code"></i> Engineering Core</h3>
+                <div class="glass-panel" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-code" aria-hidden="true"></i> Engineering Core</h3>
                     <div>
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">R</span>
@@ -201,8 +73,8 @@
                 </div>
 
                 <!-- 2. AI & ML -->
-                <div class="glass-panel">
-                    <h3><i class="fas fa-brain"></i> AI Frameworks</h3>
+                <div class="glass-panel" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-brain" aria-hidden="true"></i> AI Frameworks</h3>
                     <div>
                         <span class="skill-tag">TensorFlow</span>
                         <span class="skill-tag">PyTorch</span>
@@ -214,8 +86,8 @@
                 </div>
 
                 <!-- 3. Visualization -->
-                <div class="glass-panel">
-                    <h3><i class="fas fa-chart-pie"></i> Visualization</h3>
+                <div class="glass-panel" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-chart-pie" aria-hidden="true"></i> Visualization</h3>
                     <div>
                         <span class="skill-tag">Tableau</span>
                         <span class="skill-tag">Excel</span>
@@ -225,20 +97,20 @@
                     </div>
                 </div>
 
-                <!-- 4. RPG Languages -->
-                <div class="glass-panel">
-                    <h3><i class="fas fa-globe"></i> Languages</h3>
-                    <div class="lang-row"><span>English</span><div class="stat-bar"><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div></div></div>
-                    <div class="lang-row"><span>Cantonese</span><div class="stat-bar"><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div></div></div>
-                    <div class="lang-row"><span>Mandarin</span><div class="stat-bar"><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div><div class="stat-point filled"></div></div></div>
+                <!-- 4. RPG Languages (Dynamic via jQuery) -->
+                <div class="glass-panel" data-aos="fade-up" data-aos-delay="400">
+                    <h3><i class="fas fa-globe" aria-hidden="true"></i> Languages</h3>
+                    <div class="lang-row"><span>English</span><div class="stat-bar" data-value="5"></div></div>
+                    <div class="lang-row"><span>Cantonese</span><div class="stat-bar" data-value="5"></div></div>
+                    <div class="lang-row"><span>Mandarin</span><div class="stat-bar" data-value="5"></div></div>
                 </div>
             </div>
 
             <!-- Soft Skills & Certs Row -->
             <div class="skills-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 4rem;">
                  <!-- Professional Traits -->
-                 <div class="glass-panel" style="justify-content: center;">
-                    <h3><i class="fas fa-users"></i> Professional Traits</h3>
+                 <div class="glass-panel" style="justify-content: center;" data-aos="zoom-in" data-aos-delay="500">
+                    <h3><i class="fas fa-users" aria-hidden="true"></i> Professional Traits</h3>
                     <div style="text-align: center;">
                         <span class="skill-tag tag-soft">Problem-Solving</span>
                         <span class="skill-tag tag-soft">Communication</span>
@@ -247,28 +119,53 @@
                 </div>
 
                 <!-- Certification -->
-                <div class="glass-panel" style="flex-direction: row; align-items: center; gap: 1rem;">
-                    <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--accent-yellow);"></i>
+                <div class="glass-panel" style="flex-direction: row; align-items: center; gap: 1rem;" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--accent-yellow);" aria-hidden="true"></i>
                     <div>
                         <h3 style="margin-bottom: 0.2rem;">Certified</h3>
-                        <p style="margin:0; font-size: 0.9rem; color: #fff;">Student SOC Program Foundations</p>
+                        <p style="margin:0; font-size: 0.9rem; color: var(--text-main);">Student SOC Program Foundations</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Internship Experiences (Moved Up) -->
+        <section id="experience" data-aos="fade-up">
+            <h2><i class="fas fa-briefcase" style="font-size: 0.8em; margin-right: 10px;" aria-hidden="true"></i> Internship Experiences</h2>
+            <div class="experience-layout" data-aos="fade-right">
+                <div class="glass-panel">
+                    <h3>Data Analyst @ Quest ION IT (HK)</h3>
+                    <p class="short-desc" style="margin-bottom: 0;">
+                        Identified bottlenecks in employee data handling and engineered custom automation scripts using <strong>Python, pandas, and openpyxl</strong>. This initiative transformed the validation workflow...
+                    </p>
+                    <div class="detailed-desc" style="display: none;">
+                        <p style="margin-bottom: 0;">Identified bottlenecks in employee data handling and engineered custom automation scripts using Python, pandas, and openpyxl. This initiative transformed the validation workflow, replacing repetitive manual entry with precise, automated data cleaning pipelines. Reduced processing time by 70% and eliminated human error in data validation.</p>
+                    </div>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+                <div class="glass-panel stat-card" style="align-items: center; justify-content: center; text-align: center;" data-aos="fade-left">
+                    <div class="big-number">50+</div>
+                    <div class="stat-sub">Staffs</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Project Experience -->
-        <section>
-            <h2><i class="fas fa-project-diagram" style="font-size: 0.8em; margin-right: 10px;"></i> Project Experiences</h2>
+        <section id="projects" data-aos="fade-up">
+            <h2><i class="fas fa-project-diagram" style="font-size: 0.8em; margin-right: 10px;" aria-hidden="true"></i> Project Experiences</h2>
             
-            <!-- Project 1: TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning -->
-            <div class="glass-panel" style="margin-bottom: 2rem;">
+            <!-- Project 1: TD-Paint -->
+            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
                 <h3 style="color: var(--accent-cyan);">Optimized Diffusion Inpainting</h3>
                 <div class="project-grid">
                     <div>
-                        <p>
-                            Engineered a diffusion pipeline as stated in the paper "TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning" in Asian Face Image Dataset with <strong>360,000 face images by 2019 individuals</strong>. Modified the pipeline by adding a regulation term to enhance model's performance.
+                        <p class="short-desc">
+                            Engineered a diffusion pipeline for face inpainting. Modified the pipeline with a regulation term to enhance performance...
                         </p>
+                        <div class="detailed-desc" style="display: none;">
+                            <p>Engineered a diffusion pipeline as stated in the paper 'TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning' in Asian Face Image Dataset with 360,000 face images by 201 individuals. Modified the pipeline by adding a regulation term to enhance model's performance. Detailed benchmarks showed significant improvements in SSIM and LPIPS metrics.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
                     </div>
                     <div class="metric-wrapper">
                         <div class="chart-card">
@@ -284,26 +181,27 @@
             </div>
 
             <!-- Project 2: NER Tagging -->
-            <div class="glass-panel" style="margin-bottom: 2rem;">
+            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
                 <h3 style="color: var(--accent-pink);">NER Tagging Model</h3>
                 <div class="project-grid">
                     <div>
-                        <p>
-                            Developed and trained a Named Entity Recognition (NER) model utilizing a dataset of <strong>40,000 labeled sentences</strong>. The model was successfully deployed to predict tags for 5,000 unseen sentences, demonstrating high precision in entity extraction tasks.
+                        <p class="short-desc">
+                            Developed and trained an NER model utilizing 40,000 labeled sentences. Successfully predicted tags for 5,000 unseen sentences...
                         </p>
+                        <div class="detailed-desc" style="display: none;">
+                            <p>Developed and trained a Named Entity Recognition (NER) model utilizing a dataset of 40,000 labeled sentences. The model was successfully deployed to predict tags for 5,000 unseen sentences, demonstrating high precision in entity extraction tasks. Technical challenges included handling out-of-vocabulary terms and balancing class distribution.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
                     </div>
                     
                     <div class="metric-wrapper">
-                        <!-- Score Donut -->
                         <div class="chart-card">
                             <div class="chart-header"><span>Project Score</span></div>
                             <div style="position: relative; height: 100px; width: 100px;">
                                 <canvas id="scoreChart"></canvas>
-                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; color: white;">92%</div>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; color: var(--text-main);">92%</div>
                             </div>
                         </div>
-
-                        <!-- F1 Score Big Stat -->
                         <div class="chart-card">
                             <div class="chart-header"><span>Validation F1 Score</span></div>
                             <div class="big-stat">0.82</div>
@@ -313,13 +211,17 @@
             </div>
 
             <!-- Project 3: Multiplayer-->
-            <div class="glass-panel" style="margin-bottom: 2rem;">
+            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
                 <h3 style="color: var(--accent-purple);">Multiplayer Game Project</h3>
                 <div class="project-grid">
                     <div>
-                        <p>
-                            Engineered a high-performance, two-player cooperative game using <strong>Node.js</strong> and <strong>Socket.IO</strong>. Implemented a 60 FPS tick-based server-side engine to synchronize game state, physics, and collision detection, ensuring a seamless low-latency experience.
+                        <p class="short-desc">
+                            Engineered a high-performance, two-player cooperative game using Node.js and Socket.IO. Implemented a 60 FPS tick-based engine...
                         </p>
+                        <div class="detailed-desc" style="display: none;">
+                            <p>Engineered a high-performance, two-player cooperative game using Node.js and Socket.IO. Implemented a 60 FPS tick-based server-side engine to synchronize game state, physics, and collision detection, ensuring a seamless low-latency experience. Challenges included state reconciliation and interpolation for smooth rendering.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
                     </div>
                     
                     <div class="metric-wrapper">
@@ -328,7 +230,6 @@
                             <div class="big-stat">60Hz</div>
                             <div class="stat-sub">Real-time Sync</div>
                         </div>
-
                         <div class="chart-card">
                             <div class="chart-header"><span>Concurrency</span></div>
                             <div class="big-stat">2P</div>
@@ -338,14 +239,18 @@
                 </div>
             </div>
 
-            <!-- Project 4: Search Engine Project -->
-            <div class="glass-panel" style="margin-bottom: 2rem;">
+            <!-- Project 4: Search Engine -->
+            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
                 <h3 style="color: var(--accent-green);">Search Engine Project</h3>
                 <div class="project-grid">
                     <div>
-                        <p>
-                            Architected a full-scale search engine featuring a <strong>BFS Crawler</strong>, <strong>Vector Space Model (VSM)</strong> retrieval, and <strong>PageRank</strong> scoring. Implemented persistent multi-layered indexing using <strong>MapDB</strong> and positional indexing for high-precision phrase matching.
+                        <p class="short-desc">
+                            Architected a full-scale search engine featuring a BFS Crawler, Vector Space Model (VSM) retrieval, and PageRank scoring...
                         </p>
+                        <div class="detailed-desc" style="display: none;">
+                            <p>Architected a full-scale search engine featuring a BFS Crawler, Vector Space Model (VSM) retrieval, and PageRank scoring. Implemented persistent multi-layered indexing using MapDB and positional indexing for high-precision phrase matching. Optimized for low-latency retrieval across 300+ indexed pages.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
                     </div>
                     <div class="metric-wrapper">
                         <div class="chart-card">
@@ -357,86 +262,20 @@
                 </div>
             </div>
         </section>
-
-        <!-- Internship Experiences -->
-        <section>
-            <h2><i class="fas fa-briefcase" style="font-size: 0.8em; margin-right: 10px;"></i> Internship Experiences</h2>
-            <div class="experience-layout">
-                <div class="glass-panel">
-                    <h3>Data Analyst @ Quest ION IT (HK)</h3>
-                    <p style="margin-bottom: 0;">
-                        Identified bottlenecks in employee data handling and engineered custom automation scripts using <strong>Python, pandas, and openpyxl</strong>. This initiative transformed the validation workflow, replacing repetitive manual entry with precise, automated data cleaning pipelines.
-                    </p>
-                </div>
-                <div class="glass-panel stat-card" style="align-items: center; justify-content: center; text-align: center;">
-                    <div class="big-number">50+</div>
-                    <div class="stat-sub">Staffs</div>
-                </div>
-            </div>
-        </section>
     </div>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <footer>
         &copy; 2026 SunGamePlay
     </footer>
 
-    <!-- Chart Configuration -->
-    <script>
-        Chart.defaults.color = '#94a3b8';
-        Chart.defaults.font.family = 'Outfit';
-
-        // 1. SSIM Chart
-        new Chart(document.getElementById('ssimChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Base', 'Opt.'],
-                datasets: [{
-                    data: [0.179, 0.291],
-                    backgroundColor: ['rgba(255,255,255,0.1)', 'rgba(6,182,212,0.8)'],
-                    borderRadius: 4, barThickness: 20
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                plugins: { legend: { display: false } },
-                scales: { x: { display: false }, y: { display: true, grid: { display: false } } }
-            }
-        });
-
-        // 2. LPIPS Chart
-        new Chart(document.getElementById('lpipsChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Base', 'Opt.'],
-                datasets: [{
-                    data: [0.786, 0.543],
-                    backgroundColor: ['rgba(255,255,255,0.1)', 'rgba(236,72,153,0.8)'],
-                    borderRadius: 4, barThickness: 20
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                plugins: { legend: { display: false } },
-                scales: { x: { display: false }, y: { display: true, grid: { display: false } } }
-            }
-        });
-
-        // 3. Project Score Donut (NER)
-        new Chart(document.getElementById('scoreChart').getContext('2d'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Score', 'Remaining'],
-                datasets: [{
-                    data: [92, 8],
-                    backgroundColor: ['#10b981', 'rgba(255,255,255,0.05)'],
-                    borderWidth: 0, cutout: '75%'
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { display: false }, tooltip: { enabled: false } }
-            }
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
