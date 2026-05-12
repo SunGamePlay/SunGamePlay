@@ -11,6 +11,6 @@ Nice to meet you here, I am **SunGamePlay**, a Year 4 HKUST student passionate a
 * Data Analysis: Pandas, NumPy, Scikit-learn, Excel
 * Visualization: Tableau, Matplotlib, Seaborn, GGPlot
 * Database: SQL
-* Frameworks & Tools: TensorFlow, Jupyter, Express**, Socket.IO
+* Frameworks & Tools: TensorFlow, Jupyter, Express, Socket.IO
 * Analytical: Statistical Analysis, Data Cleaning, Predictive Modeling
 * Soft Skills: Problem-Solving, Communication, Team Collaboration
