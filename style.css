@@ -65,7 +65,7 @@ body {
 
 .progress-bar {
     height: 100%;
-    width: 0%;
+    width: 0;
     background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
     box-shadow: 0 0 10px rgba(9, 132, 227, 0.5);
     transition: width 0.1s ease;
@@ -366,7 +366,7 @@ header { text-align: center; margin-bottom: 5rem; }
 
 .detailed-desc li::before {
     content: "\f105"; /* FontAwesome angle-right */
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 6 Free", serif;
     font-weight: 900;
     position: absolute;
     left: 0;
