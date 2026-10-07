@@ -1,8 +1,7 @@
 <a href="https://sungameplay.github.io/SunGamePlay/"><img alt="Static Badge" src="https://img.shields.io/badge/Personal-Page-7cb2dd">
 </a>
 
-![---](imgs/Header.png)
-
+[![---](imgs/Header.png)](https://sungameplay.github.io/SunGamePlay/)
 Hello, I am a **Data Science + AI** graduate.
 
 ---
