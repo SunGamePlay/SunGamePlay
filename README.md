@@ -2,7 +2,7 @@
 
 ![---](imgs/Header.png)
 
-Nice to meet you here, I am **SunGamePlay**, a Year 4 HKUST student passionate about **Data Science** and **Machine Learning**, driven to transform data into actionable insights and tackle real-world challenges through innovative solutions.
+Hello, I am a **Data Science + AI** graduate.
 
 ## About Me
 * 🎓 Education : Pursuing a Bachelor’s in Data Science with an Extended Major in Artificial Intelligence at Hong Kong University of Science and Technology.
