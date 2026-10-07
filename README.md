@@ -1,4 +1,5 @@
-**[Click me](https://sungameplay.github.io/SunGamePlay/) for my personal webpage!**
+<a href="https://sungameplay.github.io/SunGamePlay/"><img alt="Static Badge" src="https://img.shields.io/badge/Personal-Page-7cb2dd">
+</a>
 
 ![---](imgs/Header.png)
 
