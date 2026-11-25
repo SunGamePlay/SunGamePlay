@@ -7,6 +7,8 @@
 [data-theme="dark"] { color-scheme: dark; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 body { font: 1rem/1.7 'Outfit', sans-serif; background: var(--bg); color: var(--text-main); overflow-x: hidden; padding-top: 70px; transition: .3s; }
 body::before, body::after { content: ""; position: fixed; }
 body::before {
