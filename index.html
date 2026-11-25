@@ -1,58 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SunGamePlay | Data Scientist</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Righteous&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- AOS (Animate On Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- External Style -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SunGamePlay | Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="scroll-progress-container"><div class="progress-bar" id="scroll-bar"></div></div>
-    <canvas id="bg-canvas"></canvas>
-
-    <nav aria-label="Main Navigation">
-        <div class="nav-logo" id="nav-logo">SGP</div>
-        <button class="nav-toggle" aria-label="Toggle Navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul class="nav-links" id="nav-links"></ul>
-        <div class="nav-controls">
-            <button id="theme-toggle" aria-label="Toggle Dark Mode">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Dynamically populated from resume-data.js -->
-    <div class="container" id="home"></div>
-
-    <!-- Back to Top -->
-    <button id="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <footer id="site-footer"></footer>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="resume-data.js"></script>
-    <script src="script.js"></script>
+  <nav aria-label="Main">
+    <span id="logo">SGP</span>
+    <ul id="links"></ul>
+    <button id="theme" aria-label="Theme"><i class="fas fa-moon"></i></button>
+  </nav>
+  <main id="home"></main>
+  <button id="top" aria-label="Top"><i class="fas fa-chevron-up"></i></button>
+  <footer id="foot"></footer>
+  <script src="resume-data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
