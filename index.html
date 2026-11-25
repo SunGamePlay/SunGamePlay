@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SunGamePlay | Data Scientist</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Righteous&display=swap" rel="stylesheet">
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -27,16 +27,11 @@
     <canvas id="bg-canvas"></canvas>
 
     <nav aria-label="Main Navigation">
-        <div class="nav-logo">SGP</div>
+        <div class="nav-logo" id="nav-logo">SGP</div>
         <button class="nav-toggle" aria-label="Toggle Navigation">
             <i class="fas fa-bars"></i>
         </button>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#internship">Internship</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
+        <ul class="nav-links" id="nav-links"></ul>
         <div class="nav-controls">
             <button id="theme-toggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
@@ -44,330 +39,20 @@
         </div>
     </nav>
 
-    <div class="container" id="home">
-        <!-- Header -->
-        <header data-aos="fade-down">
-            <p class="tagline">Data Science • Artificial Intelligence</p>
-            <h1>SunGamePlay</h1>
-            <div class="social-links">
-                <a href="https://github.com/SunGamePlay" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-            </div>
-        </header>
-
-        <!-- Technical Arsenal -->
-        <section id="skills" data-aos="fade-up">
-            <h2><i class="fas fa-terminal" style="font-size: 0.8em; margin-right: 10px;" aria-hidden="true"></i> Technical Arsenal</h2>
-            
-            <div class="skills-grid">
-                <!-- 1. Languages & Core -->
-                <div class="glass-panel" data-aos="fade-up" data-aos-delay="100">
-                    <h3><i class="fas fa-code" aria-hidden="true"></i> Engineering Core</h3>
-                    <div>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                    </div>
-                </div>
-
-                <!-- 2. Data Science + AI -->
-                <div class="glass-panel" data-aos="fade-up" data-aos-delay="200">
-                    <h3><i class="fas fa-brain" aria-hidden="true"></i> Data Science + AI</h3>
-                    <div>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                    </div>
-                </div>
-
-                <!-- 3. Internet Computing -->
-                <div class="glass-panel" data-aos="fade-up" data-aos-delay="300">
-                    <h3><i class="fas fa-chart-pie" aria-hidden="true"></i> Internet Computing</h3>
-                    <div>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">Socket.IO</span>
-                        <span class="skill-tag">Maven</span>
-                        <span class="skill-tag">jQuery</span>
-                    </div>
-                </div>
-
-                <!-- 4. Databases & Tools -->
-                <div class="glass-panel" data-aos="fade-up" data-aos-delay="400">
-                    <h3><i class="fas fa-database" aria-hidden="true"></i> Databases & Tools</h3>
-                    <div>
-                        <span class="skill-tag">MapDB</span>
-                        <span class="skill-tag">Jupyter</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">Seaborn</span>
-                        <span class="skill-tag">GGPlot</span>
-                        <span class="skill-tag">Excel</span>
-                    </div>
-                </div>
-
-                <!-- 5. Languages -->
-                <div class="glass-panel" data-aos="fade-up" data-aos-delay="500">
-                    <h3><i class="fas fa-globe" aria-hidden="true"></i> Languages</h3>
-                    <div class="lang-row"><span>English</span><div class="stat-bar" data-value="5"></div></div>
-                    <div class="lang-row"><span>Cantonese</span><div class="stat-bar" data-value="5"></div></div>
-                    <div class="lang-row"><span>Mandarin</span><div class="stat-bar" data-value="5"></div></div>
-                </div>
-            </div>
-
-            <!-- Soft Skills & Certs Row -->
-            <div class="skills-grid skills-grid-dual" style="margin-bottom: 4rem;">
-                 <!-- Professional Traits -->
-                 <div class="glass-panel" style="justify-content: center;" data-aos="zoom-in" data-aos-delay="500">
-                    <h3><i class="fas fa-users" aria-hidden="true"></i> Professional Traits</h3>
-                    <div style="text-align: center;">
-                        <span class="skill-tag tag-soft">Problem-Solving</span>
-                        <span class="skill-tag tag-soft">Communication</span>
-                        <span class="skill-tag tag-soft">Team Collaboration</span>
-                    </div>
-                </div>
-
-                <!-- Certification -->
-                <div class="glass-panel" style="flex-direction: row; align-items: center; gap: 1rem;" data-aos="zoom-in" data-aos-delay="600">
-                    <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--accent-yellow);" aria-hidden="true"></i>
-                    <div>
-                        <h3 style="margin-bottom: 0.2rem;">Certified</h3>
-                        <p style="margin:0; font-size: 0.9rem; color: var(--text-main);">Student SOC Program Foundations</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Internship Experiences (Moved Up) -->
-        <section id="internship" data-aos="fade-up">
-            <h2><i class="fas fa-briefcase" style="font-size: 0.8em; margin-right: 10px;" aria-hidden="true"></i> Internship Experiences</h2>
-            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
-                <h3>Data Analyst @ Quest ION IT (HK)</h3>
-                <div class="project-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">pandas</span>
-                    <span class="skill-tag">openpyxl</span>
-                </div>
-                <div class="project-grid">
-                    <div>
-                        <p class="short-desc">
-                            Identified bottlenecks in employee data handling and engineered custom automation scripts using <strong>Python, pandas, and openpyxl</strong>. This initiative transformed the validation workflow, replacing repetitive manual entry with precise, automated data cleaning pipelines.
-                        </p>
-                    </div>
-                    <div class="metric-wrapper">
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Impact Scale</span></div>
-                            <div class="big-stat">50+</div>
-                            <div class="stat-sub">Staffs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Experience -->
-        <section id="projects" data-aos="fade-up">
-            <h2><i class="fas fa-project-diagram" style="font-size: 0.8em; margin-right: 10px;" aria-hidden="true"></i> Project Experiences</h2>
-            
-            <!-- Project 1: TD-Paint -->
-            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
-                <h3>Optimized Diffusion Inpainting</h3>
-                <div class="project-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">PyTorch</span>
-                </div>
-                <div class="project-grid">
-                    <div>
-                        <p class="short-desc">
-                            Engineered a diffusion pipeline as stated in the paper "TD-Paint: Faster Diffusion Inpainting Through Time-aware Pixel Conditioning" in Asian Face Image Dataset with <strong>360,000 face images by 2019 individuals</strong>. Modified the pipeline by adding a regulation term to enhance model's performance.
-                        </p>
-                    </div>
-                    <div class="metric-wrapper">
-                        <div class="chart-card">
-                            <div class="chart-header"><span>SSIM</span><i class="fas fa-arrow-up metric-arrow"></i></div>
-                            <div style="height: 100px; width: 100%;"><canvas id="ssimChart"></canvas></div>
-                        </div>
-                        <div class="chart-card">
-                            <div class="chart-header"><span>LPIPS</span><i class="fas fa-arrow-down metric-arrow"></i></div>
-                            <div style="height: 100px; width: 100%;"><canvas id="lpipsChart"></canvas></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2: NER Tagging -->
-            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
-                <h3>NER Tagging Model</h3>
-                <div class="project-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Pytorch</span>
-                </div>
-                <div class="project-grid">
-                    <div>
-                        <p class="short-desc">
-                            Developed and trained a Named Entity Recognition (NER) model utilizing a dataset of <strong>40,000 labeled sentences</strong>. The model was successfully deployed to predict tags for 5,000 unseen sentences, demonstrating high precision in entity extraction tasks.
-                        </p>
-                    </div>
-
-                    <div class="metric-wrapper">
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Project Score</span></div>
-                            <div style="position: relative; height: 100px; width: 100px;">
-                                <canvas id="scoreChart"></canvas>
-                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; color: var(--text-main);">92%</div>
-                            </div>
-                        </div>
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Validation F1 Score</span></div>
-                            <div class="big-stat">0.82</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3: COMP4021 Internet Computing - Overcooked like cooperative game-->
-            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
-                <h3>Multiplayer Game Project</h3>
-                <div class="project-tags">
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">jQuery</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Express</span>
-                    <span class="skill-tag">Socket.IO</span>
-                </div>
-                <div class="project-grid">
-                    <div>
-                        <p class="short-desc">
-                            Developed an <strong>Overcooked like cooperative game</strong> that allow the players to prepare meals via preparation of ingredients, cooking and serving.
-                        </p>
-                        <div class="detailed-desc" style="display: none;">
-                            <ul>
-                                <li><strong>Architected a full-stack, real-time cooperative game</strong> for two players using Node.js, Express, and Socket.IO, enabling seamless bi-directional synchronization of game states and low-latency interactions.</li>
-                                <li><strong>Engineered a server-side physics engine</strong> utilizing AABB collision detection to centralize game authority.</li>
-                                <li><strong>Implemented a secure authentication pipeline</strong> featuring Argon2 cryptographic hashing for password protection and express-session for persistent user state management and auto-login capabilities.</li>
-                                <li><strong>Developed a high-performance 2D rendering engine with HTML5 Canvas</strong>, optimizing sprite sheet animations and dynamic UI components to ensure smooth 60 FPS gameplay.</li>
-                                <li><strong>Designed a modular entity-component system</strong> to handle complex kitchen mechanics, including state-dependent ingredient merging, chopping boards, and fridge.</li>
-                                <li><strong>Created a persistent statistics</strong> using a JSON-based database to track cooperative performance metrics.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="metric-wrapper">
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Server Tick Rate</span></div>
-                            <div class="big-stat">60Hz</div>
-                            <div class="stat-sub">Real-time Sync</div>
-                        </div>
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Concurrency</span></div>
-                            <div class="big-stat">2P</div>
-                            <div class="stat-sub">Co-op Engine</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4: COMP4321 Search Engines for Web and Enterprise Data - Search Engine -->
-            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
-                <h3>Search Engine Project</h3>
-                <div class="project-tags">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">MapDB</span>
-                    <span class="skill-tag">Spring Boot</span>
-                </div>
-                <div class="project-grid">
-                    <div>
-                        <p class="short-desc">
-                            Developed a <strong>full-scale search engine</strong> featuring a custom crawler, an intelligent indexing pipeline, and a web-based query interface.
-                        </p>
-                        <div class="detailed-desc" style="display: none;">
-                                <ul>
-                                    <li><strong>Architected a high-performance search engine</strong> from the ground up, featuring a BFS crawler capable of fetching 300 pages in under 100 seconds.</li>
-                                    <li><strong>Engineered a robust indexing pipeline</strong> utilizing Porter’s Stemming algorithm and stop-word removal to optimize search precision.</li>
-                                    <li><strong>Implemented advanced retrieval algorithms</strong>, including TF-IDF weighting and Cosine Similarity for document ranking.</li>
-                                    <li><strong>Enhanced search relevance</strong> by integrating PageRank and title-boosting heuristics.</li>
-                                    <li><strong>Developed a full-stack web interface</strong> using Spring Boot, enabling users to perform Boolean queries (including negative constraints) and visualize rich metadata such as link structures and keyword frequency.</li>
-                                    <li><strong>Optimized storage and retrieval</strong> by leveraging MapDB for inverted file indexing with positional support for efficient phrase matching.</li>
-                                </ul>
-                        </div>
-                        
-                    </div>
-                    <div class="metric-wrapper">
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Index Capacity</span></div>
-                            <div class="big-stat">300</div>
-                            <div class="stat-sub">Pages Indexed</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5: PATH - Personalized Academic Track Helper -->
-            <!-- for CTDL1902 AI and Society: Ethics, Cognition, and Critical Analysis -->
-            <!-- in Spring 2026 at The Hong Kong University of Science and Technology -->
-            <!-- https://github.com/SunGamePlay/HKUST-CTDL1902-2026-Spring-Group4-Portfolio/tree/main -->
-            <div class="glass-panel" style="margin-bottom: 2rem;" data-aos="fade-up">
-                <h3>PATH: Personalized Academic Track Helper <a href="https://github.com/SunGamePlay/HKUST-CTDL1902-2026-Spring-Group4-Portfolio/tree/main" target="_blank" class="project-title-link" title="View GitHub Repository"><i class="fab fa-github"></i></a></h3>
-                <div class="project-tags">
-                    <span class="skill-tag">Vibe Coding</span>
-                    <span class="skill-tag">Prompt Engineering</span>
-                    <span class="skill-tag">Socio-Technical Analysis</span>
-                    <span class="skill-tag">Google AI Studio</span>
-                </div>
-                <div class="project-grid">
-                    <div>
-                        <p class="short-desc">
-                            Developed <strong>PATH (Personalized Academic Track Helper)</strong>, a rapid-engineered, no-code AI course advisory prototype for <strong>CTDL1902 (2026 Spring)</strong>. Built via <strong>Google AI Studio</strong> using advanced <strong>Prompt Engineering</strong>, the system matches HKUST students with ideal Common Core courses based on personalized, MBTI-style cognitive profiles and ethical considerations.
-                        </p>
-                        <div class="detailed-desc" style="display: none;">
-                            <ul>
-                                <li><strong>Spearheaded vibe-coded prototype development</strong> of a three-layer AI academic advisor (Knowledge Base, User Persona, and Advisory Engine) utilizing rapid-turnaround no-code tools.</li>
-                                <li><strong>Formulated context-rich system instructions</strong> in Google AI Studio to precisely define the AI's persona, academic rules, and reasoning constraints.</li>
-                                <li><strong>Engineered structured few-shot prompts</strong> to digest qualitative HKUST peer-review sentiments from USTSPACE and synthesize objective recommendations.</li>
-                                <li><strong>Designed a 10-question, MBTI-style cognitive survey</strong> to map students' learning preferences into clean JSON schemas for direct system-prompt injection.</li>
-                                <li><strong>Conducted comprehensive socio-technical evaluations</strong> on AI limitations, detailing the impacts of Stochastic Parrots, the Meshing Hypothesis, and Digital Redlining.</li>
-                            </ul>
-                        </div>
-                        <a href="https://github.com/SunGamePlay/HKUST-CTDL1902-2026-Spring-Group4-Portfolio/tree/main" target="_blank" class="project-link-btn" title="View Repository on GitHub"><i class="fab fa-github"></i> GitHub Repo</a>
-                    </div>
-                    <div class="metric-wrapper">
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Course Pool</span></div>
-                            <div class="big-stat">16</div>
-                            <div class="stat-sub">Common Cores</div>
-                        </div>
-                        <div class="chart-card">
-                            <div class="chart-header"><span>Survey Size</span></div>
-                            <div class="big-stat">10 Qs</div>
-                            <div class="stat-sub">MBTI-style</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    <!-- Dynamically populated from resume-data.js -->
+    <div class="container" id="home"></div>
 
     <!-- Back to Top -->
     <button id="back-to-top" aria-label="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <footer>
-        &copy; 2026 SunGamePlay
-    </footer>
+    <footer id="site-footer"></footer>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="resume-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

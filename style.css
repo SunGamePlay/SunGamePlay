@@ -323,11 +323,7 @@ header { text-align: center; margin-bottom: 5rem; }
 
 #theme-toggle:hover { color: var(--accent-cyan); }
 
-/* --- Skills Icons --- */
-.skills-grid .glass-panel:nth-child(1) h3 i { color: var(--accent-cyan); }
-.skills-grid .glass-panel:nth-child(2) h3 i { color: var(--accent-pink); }
-.skills-grid .glass-panel:nth-child(3) h3 i { color: var(--accent-green); }
-.skills-grid .glass-panel:nth-child(4) h3 i { color: var(--accent-purple); }
+/* --- Skills Icons (colors are set per-card in resume-data.js) --- */
 
 /* --- Inline Description --- */
 .detailed-desc {
